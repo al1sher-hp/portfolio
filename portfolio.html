@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alisher Nusratov — Developer</title>
+  <meta name="description"
+    content="Alisher Nusratov — Full-Stack Developer, Python, ML va Telegram bot mutaxassisi. Toshkent, O'zbekiston.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Alisher Nusratov — Developer">
+  <meta property="og:description"
+    content="Full-stack, Python, ML va Telegram bot loyihalari. G'oyadan ishchi mahsulotgacha tezkor.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://al1sher-hp.github.io/portfolio">
+  <meta property="og:image" content="og-preview.png">
+  <meta property="og:locale" content="uz_UZ">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Alisher Nusratov — Developer">
+  <meta name="twitter:description" content="Full-stack, Python, ML va Telegram bot loyihalari.">
+  <meta name="twitter:image" content="og-preview.png">
+
+  <!-- Favicon -->
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23060910'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='18' fill='%2300d4ff'>A</text></svg>">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #060910;
+      --surface: #0d1117;
+      --card: #0f1520;
+      --border: rgba(255, 255, 255, 0.07);
+      --border2: rgba(255, 255, 255, 0.12);
+      --accent: #00d4ff;
+      --accent-dim: rgba(0, 212, 255, 0.12);
+      --green: #00ff88;
+      --green-dim: rgba(0, 255, 136, 0.1);
+      --orange: #ff8c42;
+      --text: #f0f4f8;
+      --sub: #8892a4;
+      --muted: #4a5568;
+      --r: 12px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent);
+      border-radius: 4px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.4s, border-color 0.4s, backdrop-filter 0.4s;
+      border-bottom: 1px solid transparent;
+    }
+
+    nav.scrolled {
+      background: rgba(6, 9, 16, 0.9);
+      border-color: var(--border);
+      backdrop-filter: blur(20px);
+    }
+
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.03em;
+    }
+
+    .nav-logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      color: var(--sub);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 8px var(--green);
+      display: inline-block;
+      animation: blink 2s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: 0.3
+      }
+    }
+
+    /* ── HAMBURGER ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Mobile drawer */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(6, 9, 16, 0.97);
+      backdrop-filter: blur(20px);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .mobile-menu.open {
+      opacity: 1;
+    }
+
+    .mobile-menu a {
+      font-family: 'Syne', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--sub);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+      transition: color 0.2s;
+    }
+
+    .mobile-menu a:hover {
+      color: var(--accent);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 7rem 2rem 4rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.1s ease forwards;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .hero-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(3.2rem, 8vw, 7rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.2s ease forwards;
+    }
+
+    .hero-name .accent {
+      color: var(--accent);
+    }
+
+    .hero-name .outline {
+      -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.2);
+      color: transparent;
+    }
+
+    .hero-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 3rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.35s ease forwards;
+    }
+
+    .hero-desc {
+      flex: 1;
+      min-width: 260px;
+      font-size: 1rem;
+      color: var(--sub);
+      line-height: 1.75;
+      max-width: 420px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      min-width: 200px;
+    }
+
+    .hero-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--sub);
+    }
+
+    .hero-meta-item i {
+      color: var(--accent);
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.45s ease forwards;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.6rem;
+      border-radius: 8px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.25s;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--bg);
+      font-weight: 500;
+    }
+
+    .btn-primary:hover {
+      background: #33ddff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 212, 255, 0.25);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border2);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* ── MARQUEE ── */
+    .marquee-wrap {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      padding: 0.9rem 0;
+      background: var(--surface);
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 30s linear infinite;
+    }
+
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    .marquee-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--sub);
+      text-transform: uppercase;
+      padding: 0 2.5rem;
+      white-space: nowrap;
+    }
+
+    .marquee-item .dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0)
+      }
+
+      to {
+        transform: translateX(-50%)
+      }
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+
+    .section-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-eyebrow::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 3rem;
+    }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: var(--text);
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+
+    .project-card:hover {
+      border-color: var(--border2);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--c, var(--accent)), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .project-card:hover::before {
+      opacity: 1;
+    }
+
+    .project-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+    }
+
+    .project-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--ic, var(--accent-dim));
+    }
+
+    .project-icon i {
+      width: 20px;
+      height: 20px;
+    }
+
+    .project-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+
+    .project-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.6rem;
+    }
+
+    .project-desc {
+      font-size: 0.855rem;
+      color: var(--sub);
+      line-height: 1.65;
+      flex: 1;
+      margin-bottom: 1.25rem;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .tech-pill {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.04em;
+      padding: 0.25rem 0.6rem;
+      border-radius: 100px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      color: var(--sub);
+    }
+
+    .project-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .project-link-text {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--sub);
+    }
+
+    .project-arrow {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .project-card:hover .project-arrow {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+    }
+
+    .project-card:hover .project-arrow i {
+      color: var(--accent);
+    }
+
+    /* ── SKILLS ── */
+    .skills-bg {
+      background: var(--surface);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .skill-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 1.5rem;
+      transition: border-color 0.3s;
+    }
+
+    .skill-card:hover {
+      border-color: var(--border2);
+    }
+
+    .skill-card-head {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .skill-card-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: var(--ic, var(--accent-dim));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .skill-card-icon i {
+      width: 16px;
+      height: 16px;
+    }
+
+    .skill-card-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.88rem;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .chip {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      padding: 0.28rem 0.65rem;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      color: var(--sub);
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .chip:hover {
+      color: var(--text);
+      border-color: var(--border2);
+    }
+
+    /* ── ABOUT STRIP ── */
+    .about-strip {
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.06), rgba(0, 255, 136, 0.04));
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .about-text h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+    }
+
+    .about-text p {
+      color: var(--sub);
+      font-size: 0.95rem;
+      line-height: 1.75;
+      max-width: 480px;
+    }
+
+    .about-stats {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 2.2rem;
+      letter-spacing: -0.04em;
+      background: linear-gradient(135deg, var(--accent), var(--green));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── CONTACT ── */
+    .contact-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 3rem;
+      text-align: center;
+      max-width: 620px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), var(--green), transparent);
+    }
+
+    .contact-box h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-box p {
+      color: var(--sub);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.4rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .contact-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .contact-link i {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.75rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    footer p {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav {
+        padding: 1rem 1.25rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .mobile-menu {
+        display: flex;
+        pointer-events: none;
+      }
+
+      .mobile-menu.open {
+        pointer-events: all;
+      }
+
+      .hero {
+        padding: 6rem 1.25rem 3rem;
+      }
+
+      .hero-row {
+        gap: 2rem;
+      }
+
+      .section {
+        padding: 4rem 1.25rem;
+      }
+
+      .about-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .about-stats {
+        justify-content: center;
+      }
+
+      .contact-box {
+        padding: 2rem 1.25rem;
+      }
+
+      footer {
+        justify-content: center;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Mobile drawer -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#projects" onclick="closeMobileMenu()">Loyihalar</a>
+    <a href="#skills" onclick="closeMobileMenu()">Ko'nikmalar</a>
+    <a href="#contact" onclick="closeMobileMenu()">Aloqa</a>
+  </div>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="#" class="nav-logo">A<span>.</span>N</a>
+    <ul class="nav-links">
+      <li><a href="#projects">Loyihalar</a></li>
+      <li><a href="#skills">Ko'nikmalar</a></li>
+      <li><a href="#contact">Aloqa</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:1rem">
+      <span class="nav-dot"></span>
+      <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-eyebrow">AI-Assisted Developer</div>
+    <h1 class="hero-name">
+      Alisher<br>
+      <span class="accent">Nusratov</span><br>
+      <span class="outline">Developer</span>
+    </h1>
+    <div class="hero-row">
+      <p class="hero-desc">
+        G'oyadan ishchi mahsulotgacha tezkor. Full-stack veb, Python, ML va Telegram bot loyihalari. Zamonaviy AI
+        vositalari bilan ishlash mening kuchli tomonim.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <svg style="width:14px;height:14px;color:var(--accent)" xmlns="http://www.w3.org/2000/svg" width="14"
+            height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          Toshkent, O'zbekiston
+        </div>
+        <div class="hero-meta-item">
+          <svg style="width:14px;height:14px;color:var(--accent)" xmlns="http://www.w3.org/2000/svg" width="14"
+            height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+            <path d="M6 12v5c3 3 9 3 12 0v-5" />
+          </svg>
+          TATU — 2026
+        </div>
+        <div class="hero-meta-item">
+          <svg style="width:14px;height:14px;color:var(--green)" xmlns="http://www.w3.org/2000/svg" width="14"
+            height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <path d="m9 12 2 2 4-4" />
+          </svg>
+          Ochiq ish takliflariga
+        </div>
+      </div>
+    </div>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">
+        <svg style="width:15px;height:15px" xmlns="http://www.w3.org/2000/svg" width="15" height="15"
+          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path
+            d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2" />
+        </svg>
+        Loyihalar
+      </a>
+      <a href="#contact" class="btn btn-ghost">
+        <svg style="width:15px;height:15px" xmlns="http://www.w3.org/2000/svg" width="15" height="15"
+          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="m22 2-7 20-4-9-9-4Z" />
+          <path d="M22 2 11 13" />
+        </svg>
+        Bog'lanish
+      </a>
+      <a href="https://github.com/al1sher-hp" class="btn btn-ghost" target="_blank">
+        <svg style="width:15px;height:15px" xmlns="http://www.w3.org/2000/svg" width="15" height="15"
+          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path
+            d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+          <path d="M9 18c-4.51 2-5-2-7-2" />
+        </svg>
+        GitHub
+      </a>
+      <a href="cv.pdf" class="btn btn-ghost" download>
+        <svg style="width:15px;height:15px" xmlns="http://www.w3.org/2000/svg" width="15" height="15"
+          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+          <polyline points="7 10 12 15 17 10" />
+          <line x1="12" y1="15" x2="12" y2="3" />
+        </svg>
+        CV yuklab olish
+      </a>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <!-- repeated twice for seamless loop -->
+      <span class="marquee-item"><span class="dot"></span>Python</span>
+      <span class="marquee-item"><span class="dot"></span>React.js</span>
+      <span class="marquee-item"><span class="dot"></span>Node.js</span>
+      <span class="marquee-item"><span class="dot"></span>MongoDB</span>
+      <span class="marquee-item"><span class="dot"></span>scikit-learn</span>
+      <span class="marquee-item"><span class="dot"></span>Socket.io</span>
+      <span class="marquee-item"><span class="dot"></span>Telegram Bot</span>
+      <span class="marquee-item"><span class="dot"></span>Machine Learning</span>
+      <span class="marquee-item"><span class="dot"></span>REST API</span>
+      <span class="marquee-item"><span class="dot"></span>JWT Auth</span>
+      <span class="marquee-item"><span class="dot"></span>Google Colab</span>
+      <span class="marquee-item"><span class="dot"></span>asyncio</span>
+      <span class="marquee-item"><span class="dot"></span>Python</span>
+      <span class="marquee-item"><span class="dot"></span>React.js</span>
+      <span class="marquee-item"><span class="dot"></span>Node.js</span>
+      <span class="marquee-item"><span class="dot"></span>MongoDB</span>
+      <span class="marquee-item"><span class="dot"></span>scikit-learn</span>
+      <span class="marquee-item"><span class="dot"></span>Socket.io</span>
+      <span class="marquee-item"><span class="dot"></span>Telegram Bot</span>
+      <span class="marquee-item"><span class="dot"></span>Machine Learning</span>
+      <span class="marquee-item"><span class="dot"></span>REST API</span>
+      <span class="marquee-item"><span class="dot"></span>JWT Auth</span>
+      <span class="marquee-item"><span class="dot"></span>Google Colab</span>
+      <span class="marquee-item"><span class="dot"></span>asyncio</span>
+    </div>
+  </div>
+
+  <!-- ABOUT STRIP -->
+  <div class="about-strip">
+    <div class="about-inner reveal">
+      <div class="about-text">
+        <h2>G'oyadan mahsulotgacha</h2>
+        <p>Men dasturlash bilimini zamonaviy AI vositalari bilan birlashtiraman. Arxitektura, texnik qarorlar va barcha
+          muhim nuqtalar — mening qo'limda. Kod yozish jarayonini AI tezlashtiradi, lekin loyihani men boshqaraman.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat">
+          <div class="stat-num">3+</div>
+          <div class="stat-label">Loyihalar</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">ML AUC-ROC</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">10K+</div>
+          <div class="stat-label">Dataset</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div id="projects" class="section">
+    <div class="section-eyebrow reveal">Loyihalar</div>
+    <h2 class="section-title reveal">Nima qurdim</h2>
+    <div class="projects-grid">
+
+      <a class="project-card reveal" href="https://github.com/al1sher-hp/chess-steganography" target="_blank"
+        style="--c:var(--accent);--ic:var(--accent-dim)">
+        <div class="project-header">
+          <div class="project-icon">
+            <svg style="color:var(--accent)" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              <path d="m9 12 2 2 4-4" />
+            </svg>
+          </div>
+          <span class="project-num">01 / ML</span>
+        </div>
+        <div class="project-title">Chess Steganography Detector</div>
+        <div class="project-desc">Shaxmat o'yinlari ichiga yashirilgan ma'lumotlarni ML bilan aniqlash tizimi. 10,000+
+          real Lichess o'yinlari, 3 model — barchasi AUC-ROC 1.0.</div>
+        <div class="project-tech">
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">scikit-learn</span>
+          <span class="tech-pill">RandomForest</span>
+          <span class="tech-pill">Colab T4</span>
+          <span class="tech-pill">Lichess API</span>
+        </div>
+        <div class="project-footer">
+          <span class="project-link-text">github.com/al1sher-hp</span>
+          <span class="project-arrow"><svg style="width:14px;height:14px;color:var(--sub)"
+              xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 7h10v10" />
+              <path d="M7 17 17 7" />
+            </svg></span>
+        </div>
+      </a>
+
+      <a class="project-card reveal" href="https://github.com/al1sher-hp/hotdog-order-system" target="_blank"
+        style="--c:var(--orange);--ic:rgba(255,140,66,0.12);transition-delay:.1s">
+        <div class="project-header">
+          <div class="project-icon" style="background:rgba(255,140,66,0.12)">
+            <svg style="color:var(--orange)" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+              <path d="M7 2v20" />
+              <path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" />
+            </svg>
+          </div>
+          <span class="project-num">02 / Full-Stack</span>
+        </div>
+        <div class="project-title">Hotdog Order System</div>
+        <div class="project-desc">Real-time restoran buyurtma tizimi. QR kod, JWT auth, Smart TV rejimi va boshliq uchun
+          to'liq dashboard. Socket.io orqali live yangilanishlar.</div>
+        <div class="project-tech">
+          <span class="tech-pill">React.js</span>
+          <span class="tech-pill">Node.js</span>
+          <span class="tech-pill">MongoDB</span>
+          <span class="tech-pill">Socket.io</span>
+          <span class="tech-pill">JWT</span>
+        </div>
+        <div class="project-footer">
+          <span class="project-link-text">github.com/al1sher-hp</span>
+          <span class="project-arrow"><svg style="width:14px;height:14px;color:var(--sub)"
+              xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 7h10v10" />
+              <path d="M7 17 17 7" />
+            </svg></span>
+        </div>
+      </a>
+
+      <a class="project-card reveal" href="https://github.com/al1sher-hp/uzbekistan-currency-bot" target="_blank"
+        style="--c:var(--green);--ic:var(--green-dim);transition-delay:.2s">
+        <div class="project-header">
+          <div class="project-icon" style="background:var(--green-dim)">
+            <svg style="color:var(--green)" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M12 8V4H8" />
+              <rect width="16" height="12" x="4" y="8" rx="2" />
+              <path d="M2 14h2" />
+              <path d="M20 14h2" />
+              <path d="M15 13v2" />
+              <path d="M9 13v2" />
+            </svg>
+          </div>
+          <span class="project-num">03 / Bot</span>
+        </div>
+        <div class="project-title">Uzbekistan Currency Bot</div>
+        <div class="project-desc">CBU dan real-time valyuta kurslari. 7 ta valyuta konvertatsiyasi, 3 mirror + fallback
+          API, to'liq async arxitektura.</div>
+        <div class="project-tech">
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">python-telegram-bot</span>
+          <span class="tech-pill">httpx</span>
+          <span class="tech-pill">async/await</span>
+        </div>
+        <div class="project-footer">
+          <span class="project-link-text">github.com/al1sher-hp</span>
+          <span class="project-arrow"><svg style="width:14px;height:14px;color:var(--sub)"
+              xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 7h10v10" />
+              <path d="M7 17 17 7" />
+            </svg></span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div id="skills" class="skills-bg">
+    <div class="section">
+      <div class="section-eyebrow reveal">Ko'nikmalar</div>
+      <h2 class="section-title reveal">Texnologiyalar</h2>
+      <div class="skills-grid">
+        <div class="skill-card reveal">
+          <div class="skill-card-head">
+            <div class="skill-card-icon"><svg style="color:var(--accent)" xmlns="http://www.w3.org/2000/svg" width="16"
+                height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="14" x="2" y="3" rx="2" />
+                <path d="M8 21h8" />
+                <path d="M12 17v4" />
+              </svg></div>
+            <span class="skill-card-title">Frontend</span>
+          </div>
+          <div class="chips">
+            <span class="chip">React.js</span><span class="chip">JavaScript</span>
+            <span class="chip">HTML</span><span class="chip">CSS</span>
+            <span class="chip">Socket.io-client</span>
+          </div>
+        </div>
+        <div class="skill-card reveal" style="transition-delay:.08s">
+          <div class="skill-card-head">
+            <div class="skill-card-icon" style="background:rgba(255,140,66,0.1)"><svg style="color:var(--orange)"
+                xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="8" x="2" y="2" rx="2" />
+                <rect width="20" height="8" x="2" y="14" rx="2" />
+                <path d="M6 6h.01" />
+                <path d="M6 18h.01" />
+              </svg></div>
+            <span class="skill-card-title">Backend</span>
+          </div>
+          <div class="chips">
+            <span class="chip">Node.js</span><span class="chip">Express.js</span>
+            <span class="chip">MongoDB</span><span class="chip">REST API</span>
+            <span class="chip">JWT</span><span class="chip">Socket.io</span>
+          </div>
+        </div>
+        <div class="skill-card reveal" style="transition-delay:.16s">
+          <div class="skill-card-head">
+            <div class="skill-card-icon" style="background:var(--green-dim)"><svg style="color:var(--green)"
+                xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z" />
+                <path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z" />
+                <path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4" />
+                <path d="M17.599 6.5a3 3 0 0 0 .399-1.375" />
+                <path d="M6.003 5.125A3 3 0 0 0 6.401 6.5" />
+                <path d="M3.477 10.896a4 4 0 0 1 .585-.396" />
+                <path d="M19.938 10.5a4 4 0 0 1 .585.396" />
+                <path d="M6 18a4 4 0 0 1-1.967-.516" />
+                <path d="M19.967 17.484A4 4 0 0 1 18 18" />
+              </svg></div>
+            <span class="skill-card-title">Python & ML</span>
+          </div>
+          <div class="chips">
+            <span class="chip">Python</span><span class="chip">scikit-learn</span>
+            <span class="chip">pandas</span><span class="chip">numpy</span>
+            <span class="chip">asyncio</span><span class="chip">httpx</span>
+          </div>
+        </div>
+        <div class="skill-card reveal" style="transition-delay:.24s">
+          <div class="skill-card-head">
+            <div class="skill-card-icon" style="background:rgba(168,85,247,0.1)"><svg style="color:#a855f7"
+                xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+              </svg></div>
+            <span class="skill-card-title">Vositalar</span>
+          </div>
+          <div class="chips">
+            <span class="chip">Git / GitHub</span><span class="chip">Google Colab</span>
+            <span class="chip">Vercel</span><span class="chip">MongoDB Atlas</span>
+            <span class="chip">AI-Assisted Dev</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div id="contact" class="section">
+    <div class="contact-box reveal">
+      <h2>Gaplashaylik 👋</h2>
+      <p>Loyiha, freelance yoki ish taklifi bo'lsa — men doim ochiqman.</p>
+      <div class="contact-links">
+        <a href="https://t.me/al1sher_hp" class="contact-link" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m22 2-7 20-4-9-9-4Z" />
+            <path d="M22 2 11 13" />
+          </svg> Telegram
+        </a>
+        <a href="mailto:alishernusratov77@gmail.com" class="contact-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="20" height="16" x="2" y="4" rx="2" />
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+          </svg> Email
+        </a>
+        <a href="https://github.com/al1sher-hp" class="contact-link" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+            <path d="M9 18c-4.51 2-5-2-7-2" />
+          </svg> GitHub
+        </a>
+        <a href="https://linkedin.com/in/alisher-nusratov" class="contact-link" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+            <rect width="4" height="12" x="2" y="9" />
+            <circle cx="4" cy="4" r="2" />
+          </svg> LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 Alisher Nusratov</p>
+    <p>Toshkent, O'zbekiston</p>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const btn = document.getElementById('hamburger');
+      const isOpen = menu.classList.toggle('open');
+      btn.classList.toggle('open', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    }
+
+    function closeMobileMenu() {
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.getElementById('hamburger').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  </script>
+</body>
+
+</html>
